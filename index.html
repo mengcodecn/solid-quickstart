@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <title>Solid App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
 
-    <script src="/src/index.tsx" type="module"></script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Open Example App</title>
+  <script>
+    function openApp() {
+      const app = 'apps://www.example.com/#/book/hello-world';
+      const fallback = 'https://example.com';
+      const now = Date.now();
+      const timeout = 2000;
+
+      window.location = app;
+
+      setTimeout(() => {
+        if (Date.now() - now < timeout + 100) {
+          window.location = fallback;
+        }
+      }, timeout);
+    }
+
+    // window.onload = openApp;
+  </script>
+</head>
+
+<body>
+  <p>POC for Opening Apps</p>
+  <br>
+  <a href="app://www.example.com/#/book/hello-world">Open the Example App</a>
+  <br>
+  <br>
+  <a href="javascript:openApp()">Open the Undownloaded App</a>
+</body>
+
 </html>
